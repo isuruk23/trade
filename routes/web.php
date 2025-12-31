@@ -16,3 +16,6 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/platform', [PageController::class, 'platform'])->name('platform');
 Route::get('/plan', [PageController::class, 'plan'])->name('plan');
+Route::get('/trade', [PageController::class, 'trade'])->name('trade');
+Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+

@@ -35,6 +35,7 @@
                 <ul class="nav-links">
                     <li><a href="{{ route('plan') }}">Plan</a></li>
                     <li><a href="{{ route('about') }}">About</a></li>
+                    <li><a href="{{ route('trade') }}">Trade ETX</a></li>
                     <li><a href="{{ route('platform') }}">Platform</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
                 </ul>

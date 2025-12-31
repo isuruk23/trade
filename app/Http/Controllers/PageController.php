@@ -26,4 +26,12 @@ class PageController extends Controller
     {
         return view('platform');
     }
+    public function trade()
+    {
+        return view('trade');
+    }
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
 }
