@@ -234,6 +234,8 @@
 @endsection
 @section('script')
     <script>
+
+        
         // Add interactive effects
         document.addEventListener('DOMContentLoaded', function() {
             // Button hover effects

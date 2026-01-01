@@ -14,15 +14,15 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('public/css/styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ asset('public/images/favicon.ico') }}">
 </head>
 <body>
-    <div id="app">
-        <header>
+
+        <!-- <header>
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
@@ -72,12 +72,57 @@
             </nav>
         </div>
     </header>
-    
+     -->
+       <header>
+        <div class="container header-container">
+            <a class="navbar-brand logo" href="{{ route('home') }}">
+                    <img src="{{ asset('public/images/logo.png') }}" class="img-fluid logo-img" width="70px" alt="">
+                    {{ config('app.name', 'Zimvex') }}
+                </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="{{ route('plan') }}">Plan</a></li>
+                    <li><a href="{{ route('about') }}">About</a></li>
+                    <li><a href="{{ route('trade') }}">Trade ETX</a></li>
+                    <li><a href="{{ route('platform') }}">Platform</a></li>
+                    <li><a href="{{ route('contact') }}">Contact</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="btn btn-outline">Log In</button>
+                    <button class="btn btn-solid">Get Started</button>
+                </div>
+            </nav>
+            
+            <!-- Mobile Navigation Toggle -->
+            <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars" id="toggleIcon"></i>
+            </button>
+            
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav" id="mobileNav">
+                <ul class="mobile-nav-links">
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('plan') }}">Plan</a></li>
+                    <li><a href="{{ route('about') }}">About</a></li>
+                    <li><a href="{{ route('trade') }}">Trade ETX</a></li>
+                    <li><a href="{{ route('platform') }}">Platform</a></li>
+                    <li><a href="{{ route('contact') }}">Contact</a></li>
+                
+                <div class="mobile-nav-buttons">
+                    <button class="btn btn-outline">Log In</button>
+                    <button class="btn btn-solid">Get Started</button>
+                </div>
+            </nav>
+        </div>
+    </header>
         
 
-        <main class="py-4">
+       
             @yield('content')
-        </main>
+    
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -139,8 +184,49 @@
             </div>
         </div>
     </footer>
-    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const toggleIcon = document.getElementById('toggleIcon');
+        
+        mobileNavToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                toggleIcon.classList.remove('fa-times');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                toggleIcon.classList.remove('fa-times');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!mobileNavToggle.contains(event.target) && !mobileNav.contains(event.target)) {
+                mobileNav.classList.remove('active');
+                toggleIcon.classList.remove('fa-times');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+    </script>
     @yield('script')
 </body>
 </html>

@@ -1,10 +1,10 @@
 @extends('layouts.web')
 
 @section('content')
- <!-- Hero Section -->
+<!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1 class="fade-in">Get in Touch with Zimvex</h1>
+            <h1 class="fade-in">Get in Touch with NexTradeX</h1>
             <p class="fade-in">Our support team is available 24/7 to assist with any questions about trading, accounts, or technical issues. Fast, secure, and professional assistance.</p>
             
             <div class="stats-bar fade-in" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 60px;">
@@ -34,7 +34,7 @@
                         <i class="fas fa-envelope" style="color: #00F7FF; position: relative; z-index: 2;"></i>
                     </div>
                     <h3>Email Support</h3>
-                    <div class="contact-info">support@Zimvex.com</div>
+                    <div class="contact-info">support@nextradex.com</div>
                     <p class="contact-desc">For account assistance, technical issues, and general inquiries. Average response time: 2 hours.</p>
                 </div>
                 
@@ -61,7 +61,7 @@
                         <i class="fas fa-handshake" style="color: #00FF9D; position: relative; z-index: 2;"></i>
                     </div>
                     <h3>Business Inquiries</h3>
-                    <div class="contact-info">partnerships@Zimvex.com</div>
+                    <div class="contact-info">partnerships@nextradex.com</div>
                     <p class="contact-desc">For institutional partnerships, API integration, and enterprise solutions.</p>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                         <div class="success-message" id="successMessage">
                             <i class="fas fa-check-circle" style="color: #00FF9D; font-size: 24px; margin-bottom: 10px; display: block;"></i>
                             <h4>Message Sent Successfully!</h4>
-                            <p>Thank you for contacting Zimvex. Our support team will respond within 2 hours.</p>
+                            <p>Thank you for contacting NexTradeX. Our support team will respond within 2 hours.</p>
                         </div>
                         
                         <div class="form-footer">
@@ -282,7 +282,6 @@
             </div>
         </div>
     </section>
-
 @endsection
 @section('script')
        <script>
@@ -363,62 +362,7 @@
                 });
             });
             
-            // Live chat button functionality
-            const liveChatBtn = document.getElementById('liveChatBtn');
-            const startChatBtn = document.getElementById('startChatBtn');
-            
-            function simulateLiveChat() {
-                const chatWindow = document.createElement('div');
-                chatWindow.innerHTML = `
-                    <div style="position: fixed; bottom: 100px; right: 30px; width: 350px; height: 450px; background: rgba(30, 45, 65, 0.95); border-radius: 12px; backdrop-filter: blur(10px); border: 1px solid rgba(0, 247, 255, 0.2); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); z-index: 1000; display: flex; flex-direction: column; overflow: hidden;">
-                        <div style="background: linear-gradient(90deg, #1A3951, #134061); padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <div>
-                                    <h4 style="margin: 0; font-size: 18px;">Zimvex Live Chat</h4>
-                                    <p style="margin: 5px 0 0; font-size: 12px; color: #00F7FF;">Connecting to support agent...</p>
-                                </div>
-                                <button id="closeChat" style="background: none; border: none; color: white; cursor: pointer; font-size: 20px;">×</button>
-                            </div>
-                        </div>
-                        <div style="flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px;">
-                            <div style="background: rgba(0, 247, 255, 0.1); padding: 12px; border-radius: 12px; max-width: 80%; align-self: flex-start; border: 1px solid rgba(0, 247, 255, 0.2);">
-                                <div style="font-size: 12px; color: #00F7FF; margin-bottom: 5px;">Support Bot</div>
-                                <div>Hello! You're connected to Zimvex Support. An agent will be with you shortly. How can we help you today?</div>
-                            </div>
-                            <div style="font-size: 12px; color: #999; text-align: center; margin: 10px 0;">Agent connected • Average wait time: 1 min</div>
-                        </div>
-                        <div style="padding: 15px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                            <div style="display: flex; gap: 10px;">
-                                <input type="text" placeholder="Type your message..." style="flex: 1; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: white; font-family: 'Inter', sans-serif;">
-                                <button style="background: linear-gradient(90deg, #00F7FF, #00FF9D); border: none; border-radius: 8px; padding: 0 20px; color: #1A3951; font-weight: 600; cursor: pointer;">Send</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                document.body.appendChild(chatWindow);
-                
-                // Add close functionality
-                const closeBtn = chatWindow.querySelector('#closeChat');
-                closeBtn.addEventListener('click', function() {
-                    document.body.removeChild(chatWindow);
-                });
-            }
-            
-            liveChatBtn.addEventListener('click', simulateLiveChat);
-            startChatBtn.addEventListener('click', simulateLiveChat);
-            
-            // Map pin hover effects
-            const mapPins = document.querySelectorAll('.map-pin');
-            mapPins.forEach(pin => {
-                pin.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.3)';
-                });
-                
-                pin.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1)';
-                });
-            });
+         
             
             // Scroll animations
             const fadeElements = document.querySelectorAll('.fade-in');
