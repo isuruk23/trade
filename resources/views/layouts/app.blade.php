@@ -134,6 +134,13 @@
                         <span class="menu-text">ETX Coin Management</span>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-user-check menu-icon"></i>
+                        <span class="menu-text">KYC Verification</span>
+                        <span class="badge" style="position: static; margin-left: auto;">7</span>
+                    </a>
+                </li>
                  @endif
                  
                 <!-- <li class="menu-item">
@@ -164,13 +171,7 @@
                     </a>
                 </li>
                 
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="fas fa-user-check menu-icon"></i>
-                        <span class="menu-text">KYC Verification</span>
-                        <span class="badge" style="position: static; margin-left: auto;">7</span>
-                    </a>
-                </li>
+                
                  -->
                 @if(auth()->check() && auth()->user()->role === 'user')
 
