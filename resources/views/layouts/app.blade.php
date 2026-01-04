@@ -135,7 +135,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="kyc" class="menu-link">
                         <i class="fas fa-user-check menu-icon"></i>
                         <span class="menu-text">KYC Verification</span>
                         <span class="badge" style="position: static; margin-left: auto;">7</span>
