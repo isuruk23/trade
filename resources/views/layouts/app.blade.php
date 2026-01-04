@@ -82,7 +82,7 @@
             
             <ul class="sidebar-menu">
                 <li class="menu-item">
-                    <a href="#" class="menu-link active">
+                   <a href="{{ auth()->user()->role === 'admin' ? url('/admin/dashboard') : url('/dashboard') }}" class="menu-link active">
                         <i class="fas fa-tachometer-alt menu-icon"></i>
                         <span class="menu-text">Dashboard</span>
                     </a>
@@ -97,13 +97,13 @@
                     
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="#" class="menu-link">All Users</a>
+                            <a href="{{ route('admin.users') }}" class="menu-link">All Users</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="#" class="menu-link">Active Users</a>
+                            <a href="{{ route('admin.users.active') }}" class="menu-link">Active Users</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="#" class="menu-link">Suspended Users</a>
+                            <a href="{{ route('admin.users.suspended') }}" class="menu-link">Suspended Users</a>
                         </li>
                         <li class="submenu-item">
                             <a href="#" class="menu-link">User Activity</a>

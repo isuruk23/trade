@@ -77,7 +77,134 @@
             </div>
             
             <!-- Charts Section -->
-            <div class="charts-section">
+            
+            
+            <!-- Tables Section -->
+            <div class="tables-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Activity</h2>
+                    <div>
+                        <button class="btn btn-sm btn-view">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="tables-grid">
+                    <!-- Recent Users Table -->
+                    <div class="table-card">
+                        <h3 style="margin-bottom: 20px; font-size: 16px; font-weight: 600;">Recent Users</h3>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>User</th>
+                                        <th>Country</th>
+                                        <th>Joined</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($activeUsers as $key => $user)
+                                    <tr>
+                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->country ?? '-' }}</td>
+                                        <td>{{ $user->created_at->format('Y-m-d') }}</td>
+                                        <td><span class="status-badge status-approved">Verified</span></td>
+                                        
+                                    </tr>
+                                    @endforeach
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Latest Deposits Table -->
+                    <div class="table-card">
+                        <h3 style="margin-bottom: 20px; font-size: 16px; font-weight: 600;">Latest Deposits</h3>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     @foreach($deposits as $tx)
+                                    <tr>
+                                        <td>
+                                            <div class="user-cell">
+                                                <!-- <div class="user-avatar">JD</div> -->
+                                                <div>
+                                                    <div style="font-weight: 500;">{{ $tx->user->name }}</div>
+                                                    <div style="font-size: 12px; color: var(--text-gray);">{{ $tx->amount }} Deposit</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{ $tx->amount }}</td>
+                                        <td> <span class="status-badge 
+                                                {{ $tx->status == 'approved' ? 'status-completed' : ($tx->status == 'pending' ? 'status-pending' : 'status-rejected') }}">
+                                                {{ ucfirst($tx->status) }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-view">Details</button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Latest Withdrawals Table -->
+                    <div class="table-card">
+                        <h3 style="margin-bottom: 20px; font-size: 16px; font-weight: 600;">Latest Withdrawals</h3>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($withdrawals as $tx)
+                                    <tr>
+                                        <td>
+                                            <div class="user-cell">
+                                                <!-- <div class="user-avatar">JD</div> -->
+                                                <div>
+                                                    <div style="font-weight: 500;">{{ $tx->user->name }}</div>
+                                                    <div style="font-size: 12px; color: var(--text-gray);">{{ $tx->amount }} Deposit</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{ $tx->amount }}</td>
+                                        <td> <span class="status-badge 
+                                                {{ $tx->status == 'approved' ? 'status-completed' : ($tx->status == 'pending' ? 'status-pending' : 'status-rejected') }}">
+                                                {{ ucfirst($tx->status) }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-view">Details</button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="charts-section">
                 <div class="section-header">
                     <h2 class="section-title">Platform Analytics</h2>
                     <div>
@@ -133,225 +260,6 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Tables Section -->
-            <div class="tables-section">
-                <div class="section-header">
-                    <h2 class="section-title">Recent Activity</h2>
-                    <div>
-                        <button class="btn btn-sm btn-view">
-                            <i class="fas fa-sync-alt"></i> Refresh
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="tables-grid">
-                    <!-- Recent Users Table -->
-                    <div class="table-card">
-                        <h3 style="margin-bottom: 20px; font-size: 16px; font-weight: 600;">Recent Users</h3>
-                        <div class="table-responsive">
-                            <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>User</th>
-                                        <th>Joined</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="user-cell">
-                                                <div class="user-avatar">JD</div>
-                                                <div>
-                                                    <div style="font-weight: 500;">John Doe</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">john@example.com</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>2024-03-15</td>
-                                        <td><span class="status-badge status-approved">Verified</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-view">View</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="user-cell">
-                                                <div class="user-avatar">AS</div>
-                                                <div>
-                                                    <div style="font-weight: 500;">Alice Smith</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">alice@example.com</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>2024-03-14</td>
-                                        <td><span class="status-badge status-pending">Pending KYC</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-view">Review</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="user-cell">
-                                                <div class="user-avatar">RJ</div>
-                                                <div>
-                                                    <div style="font-weight: 500;">Robert Johnson</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">robert@example.com</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>2024-03-13</td>
-                                        <td><span class="status-badge status-approved">Verified</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-view">View</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    
-                    <!-- Latest Deposits Table -->
-                    <div class="table-card">
-                        <h3 style="margin-bottom: 20px; font-size: 16px; font-weight: 600;">Latest Deposits</h3>
-                        <div class="table-responsive">
-                            <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>User</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="user-cell">
-                                                <div class="user-avatar">JD</div>
-                                                <div>
-                                                    <div style="font-weight: 500;">John Doe</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">BTC Deposit</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>0.5 BTC</td>
-                                        <td><span class="status-badge status-completed">Completed</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-view">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="user-cell">
-                                                <div class="user-avatar">AS</div>
-                                                <div>
-                                                    <div style="font-weight: 500;">Alice Smith</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">USDX Deposit</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>$5,000</td>
-                                        <td><span class="status-badge status-pending">Pending</span></td>
-                                        <td>
-                                            <div class="action-buttons">
-                                                <button class="btn btn-sm btn-approve">Approve</button>
-                                                <button class="btn btn-sm btn-reject">Reject</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="user-cell">
-                                                <div class="user-avatar">RJ</div>
-                                                <div>
-                                                    <div style="font-weight: 500;">Robert Johnson</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">ETH Deposit</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>2.5 ETH</td>
-                                        <td><span class="status-badge status-completed">Completed</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-view">Details</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    
-                    <!-- Latest Withdrawals Table -->
-                    <div class="table-card">
-                        <h3 style="margin-bottom: 20px; font-size: 16px; font-weight: 600;">Latest Withdrawals</h3>
-                        <div class="table-responsive">
-                            <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>User</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="user-cell">
-                                                <div class="user-avatar">JD</div>
-                                                <div>
-                                                    <div style="font-weight: 500;">John Doe</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">USDT Withdrawal</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>$1,200</td>
-                                        <td><span class="status-badge status-pending">Pending</span></td>
-                                        <td>
-                                            <div class="action-buttons">
-                                                <button class="btn btn-sm btn-approve">Approve</button>
-                                                <button class="btn btn-sm btn-reject">Reject</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="user-cell">
-                                                <div class="user-avatar">AS</div>
-                                                <div>
-                                                    <div style="font-weight: 500;">Alice Smith</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">BTC Withdrawal</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>0.1 BTC</td>
-                                        <td><span class="status-badge status-approved">Approved</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-view">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="user-cell">
-                                                <div class="user-avatar">RJ</div>
-                                                <div>
-                                                    <div style="font-weight: 500;">Robert Johnson</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">USDX Withdrawal</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>$3,500</td>
-                                        <td><span class="status-badge status-rejected">Rejected</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-view">View</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </div>
 @endsection

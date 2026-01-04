@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
 use App\Http\Controllers\Admin\KycController as AdminKycController;
 use App\Http\Controllers\User\KycController as UserKycController;
+use App\Http\Controllers\Admin\UserController;
 
 
 // Route::get('/', function () {
@@ -63,6 +64,10 @@ Route::middleware(['auth','admin'])
         Route::get('/kyc',[AdminKycController::class,'index']);
         Route::post('/kyc/{id}/approve',[AdminKycController::class,'approve'])->name('admin.kyc.approve');
         Route::post('/kyc/{id}/reject',[AdminKycController::class,'reject'])->name('admin.kyc.reject');
+
+        Route::get('/users',[UserController::class,'index'])->name('admin.users');
+        Route::get('/users/active',[UserController::class,'active'])->name('admin.users.active');
+        Route::get('/users/suspended',[UserController::class,'suspended'])->name('admin.users.suspended');
 });
 });
 

@@ -15,6 +15,7 @@ class DashboardController extends Controller
     {
          return view('admin.dashboard', [
             'users' => User::where('role', 'user')->count(),
+            'activeUsers' => User::where('status', 1)->orderBy('created_at','desc')->get(),
 
             // counts
             'pending' => Transaction::where('status','pending')->count(),
@@ -30,6 +31,11 @@ class DashboardController extends Controller
                 ->sum('amount'),
 
             'totalBalance' => User::sum('balance'),
+
+            'deposits' => Transaction::where('type','deposit')->orderBy('created_at','desc')->get(),
+            'withdrawals' => Transaction::where('type','withdrawal')->orderBy('created_at','desc')->get(),
+
+           
         ]);
     }
 }
