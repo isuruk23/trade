@@ -88,6 +88,13 @@
                     <li><a href="{{ route('trade') }}">Trade ETX</a></li>
                     <li><a href="{{ route('platform') }}">Platform</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
+                    @auth
+                    <li>
+                    <a href="{{ auth()->user()->role === 'admin' ? url('/admin/dashboard') : url('/dashboard') }}">
+                    Dashboard
+                    </a>
+                    </li>
+                    @endauth
                 </ul>
                 
                 <div class="nav-buttons">
@@ -110,6 +117,13 @@
                     <li><a href="{{ route('trade') }}">Trade ETX</a></li>
                     <li><a href="{{ route('platform') }}">Platform</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
+                    @auth
+                    <li>
+                    <a href="{{ auth()->user()->role === 'admin' ? url('/admin/dashboard') : url('/dashboard') }}">
+                    Dashboard
+                    </a>
+                    </li>
+                    @endauth
                 
                 <div class="mobile-nav-buttons">
                    <a href="/login" class="btn btn-outline">Log In</a>
