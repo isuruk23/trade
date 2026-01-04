@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['admin','user'])->default('user');
+            $table->decimal('balance', 18, 8)->default(0);
+            $table->string('country')->default(0);
+            $table->integer('verified')->default(0);
+            $table->integer('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

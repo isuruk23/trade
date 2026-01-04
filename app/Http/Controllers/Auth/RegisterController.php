@@ -28,7 +28,27 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+   
+    protected $redirectTo = '/kyc';
+    protected function authenticated($request, $user)
+    {
+        if ($user->role === 'admin') {
+            return redirect('/admin/dashboard');
+        }
+        else{
+            if(!auth()->user()->kyc || auth()->user()->kyc->status !== 'approved'){
+                return redirect('/kyc')->withErrors('Complete KYC first');
+            }
+            else{
+                return redirect('/user/dashboard');
+
+            }
+        }
+        
+
+        
+    }
+
 
     /**
      * Create a new controller instance.
@@ -66,6 +86,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'country' => $data['country'],
             'password' => Hash::make($data['password']),
         ]);
     }

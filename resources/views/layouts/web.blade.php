@@ -91,8 +91,8 @@
                 </ul>
                 
                 <div class="nav-buttons">
-                    <button class="btn btn-outline">Log In</button>
-                    <button class="btn btn-solid">Get Started</button>
+                    <a href="/login" class="btn btn-outline">Log In</a>
+                    <a href="/register" class="btn btn-solid">Get Started</a>
                 </div>
             </nav>
             
@@ -112,8 +112,8 @@
                     <li><a href="{{ route('contact') }}">Contact</a></li>
                 
                 <div class="mobile-nav-buttons">
-                    <button class="btn btn-outline">Log In</button>
-                    <button class="btn btn-solid">Get Started</button>
+                   <a href="/login" class="btn btn-outline">Log In</a>
+                    <a href="/register" class="btn btn-solid">Get Started</a>
                 </div>
             </nav>
         </div>
