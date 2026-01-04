@@ -3,7 +3,7 @@
 @section('content')
 <div class="auth-container">
         <!-- Left Side - Visual -->
-        <div class="auth-visual">
+        <div class="auth-visual ">
             <h2>Trade Smarter, Securely</h2>
             <p>Access the world's most advanced trading platform with institutional-grade security and lightning-fast execution.</p>
             
