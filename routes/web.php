@@ -61,6 +61,7 @@ Route::middleware(['auth','admin'])
         Route::get('/withdrawals',[TransactionController::class,'withdrawals']);
         Route::post('/transactions/{id}/approve',[TransactionController::class,'approve'])
             ->name('admin.tx.approve');
+        Route::post('/transactions/{id}/reject', [TransactionController::class,'reject'])->name('admin.tx.reject');
         Route::get('/kyc',[AdminKycController::class,'index']);
         Route::post('/kyc/{id}/approve',[AdminKycController::class,'approve'])->name('admin.kyc.approve');
         Route::post('/kyc/{id}/reject',[AdminKycController::class,'reject'])->name('admin.kyc.reject');
