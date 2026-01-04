@@ -135,21 +135,7 @@
                     </a>
                 </li>
                  @endif
-                 <li class="menu-item">
-                    <a href="{{ route('deposit.create') }}" class="menu-link">
-                        <i class="fas fa-money-bill-wave menu-icon"></i>
-                        <span class="menu-text">Deposits</span>
-                        <span class="badge" style="position: static; margin-left: auto;">12</span>
-                    </a>
-                </li>
-                
-                <li class="menu-item">
-                    <a href="{{ route('withdraw.create') }}" class="menu-link">
-                        <i class="fas fa-wallet menu-icon"></i>
-                        <span class="menu-text">Withdrawals</span>
-                        <span class="badge" style="position: static; margin-left: auto;">8</span>
-                    </a>
-                </li>
+                 
                 <!-- <li class="menu-item">
                     <a href="#" class="menu-link">
                         <i class="fas fa-exchange-alt menu-icon"></i>
@@ -186,6 +172,24 @@
                     </a>
                 </li>
                  -->
+                @if(auth()->check() && auth()->user()->role === 'user')
+
+                 <li class="menu-item">
+                    <a href="{{ route('deposit.create') }}" class="menu-link">
+                        <i class="fas fa-money-bill-wave menu-icon"></i>
+                        <span class="menu-text">Deposits</span>
+                        <span class="badge" style="position: static; margin-left: auto;">12</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="{{ route('withdraw.create') }}" class="menu-link">
+                        <i class="fas fa-wallet menu-icon"></i>
+                        <span class="menu-text">Withdrawals</span>
+                        <span class="badge" style="position: static; margin-left: auto;">8</span>
+                    </a>
+                </li>
+                @endif
                 
                 <div class="sidebar-header" style="margin-top: 20px;">
                     <div class="sidebar-title">System</div>
