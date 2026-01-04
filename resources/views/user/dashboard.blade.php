@@ -4,7 +4,7 @@
 <h4 class="mb-4">User Dashboard</h4>
 
 <div class="row g-3">
-    <div class="col-md-3">
+    <div class="col-sm-12 col-md-3 col-lg-3">
         <div class="card shadow-sm border-0">
             <div class="card-body">
                 <h6 class="text-muted">Available Balance</h6>
@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-sm-12 col-md-3 col-lg-3">
         <div class="card shadow-sm border-0">
             <div class="card-body">
                 <h6 class="text-muted">Total Deposits</h6>
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-sm-12 col-md-3 col-lg-3">
         <div class="card shadow-sm border-0">
             <div class="card-body">
                 <h6 class="text-muted">Withdrawals</h6>
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-sm-12 col-md-3 col-lg-3">
         <div class="card shadow-sm border-0">
             <div class="card-body">
                 <h6 class="text-muted">Pending Requests</h6>
@@ -47,11 +47,11 @@
 </div>
 
 <div class="row g-3 my-3">
-    <div class="col-md-12">
+    <div class="col-12">
         <div class="card shadow-sm border-0">
-            <div class="card-body">
+            <div class="card-body table-responsive">
                 <h6 class="text-muted">Transaction</h6>
-                <table class="table table-bordered table-hover align-middle">
+                <table class="table">
                 <thead class="table-light">
                     <tr>
                         <th>Type</th>

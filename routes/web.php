@@ -11,6 +11,8 @@ use App\Http\Controllers\User\DashboardController as UserDashboard;
 use App\Http\Controllers\Admin\KycController as AdminKycController;
 use App\Http\Controllers\User\KycController as UserKycController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\TradeController;
+use App\Http\Controllers\CoinController;
 
 
 // Route::get('/', function () {
@@ -48,7 +50,16 @@ Route::get('/withdraw', [WithdrawalController::class, 'create'])
 Route::post('/withdraw', [WithdrawalController::class, 'store'])
     ->name('withdraw.store');
 
+Route::get('/trade/etx', [TradeController::class, 'tradeForm'])
+        ->name('trade.etx');
 
+Route::post('/trade/etx', [TradeController::class, 'trade'])
+    ->name('trade.etx.submit');
+
+
+
+Route::get('/my-trades', [TradeController::class, 'myTrades'])->name('trades.my');
+Route::post('/my-trades/{trade}/close', [TradeController::class, 'closeTrade'])->name('trades.close');
 
 
 Route::middleware(['auth','admin'])
@@ -69,6 +80,16 @@ Route::middleware(['auth','admin'])
         Route::get('/users',[UserController::class,'index'])->name('admin.users');
         Route::get('/users/active',[UserController::class,'active'])->name('admin.users.active');
         Route::get('/users/suspended',[UserController::class,'suspended'])->name('admin.users.suspended');
+
+        Route::get('/coins', [CoinController::class, 'index'])->name('coins.index');
+        Route::post('/coins', [CoinController::class, 'store'])->name('coins.store');
+        
+        Route::post('/coins/{coin}/update-price', [CoinController::class, 'updatePrice'])->name('admin.coins.updatePrice');
+ 
+        Route::get('/trades', [TradeController::class, 'index'])->name('trades.index');
+      
+
+       
 });
 });
 

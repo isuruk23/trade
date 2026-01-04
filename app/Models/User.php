@@ -47,9 +47,15 @@ class User extends Authenticatable
         ];
     }
 
-    public function wallet()
+    public function wallets()
     {
         return $this->hasMany(Wallet::class);
+    }
+
+    // Optional: relation to trades
+    public function trades()
+    {
+        return $this->hasMany(Trade::class);
     }
 
     public function transactions()

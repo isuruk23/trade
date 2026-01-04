@@ -130,9 +130,15 @@
                     </a>
                 </li>
                  <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('coins.index') }}" class="menu-link">
                         <i class="fas fa-coins menu-icon"></i>
                         <span class="menu-text">ETX Coin Management</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('trades.index') }}" class="menu-link">
+                        <i class="fas fa-coins menu-icon"></i>
+                        <span class="menu-text">Trade Management</span>
                     </a>
                 </li>
                 <li class="menu-item">
@@ -188,6 +194,14 @@
                     <a href="{{ route('withdraw.create') }}" class="menu-link">
                         <i class="fas fa-wallet menu-icon"></i>
                         <span class="menu-text">Withdrawals</span>
+                        <span class="badge" style="position: static; margin-left: auto;">8</span>
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a href="{{ route('trade.etx') }}" class="menu-link">
+                        <i class="fas fa-wallet menu-icon"></i>
+                        <span class="menu-text">Trade</span>
                         <span class="badge" style="position: static; margin-left: auto;">8</span>
                     </a>
                 </li>

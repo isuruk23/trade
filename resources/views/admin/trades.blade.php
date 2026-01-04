@@ -1,0 +1,43 @@
+@extends('layouts.app')
+
+@section('content')
+<h4 class="mb-4">Deposit Details</h4>
+
+<div class="card shadow-sm">
+    <div class="card-body table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>User</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Margin</th>
+                <th>Leverage</th>
+                <th>Open Price</th>
+                <th>Close Price</th>
+                <th>Status</th>
+                <th>PnL</th>
+            </tr>
+            @foreach($trades as $trade)
+            <tr>
+                <td>{{ $trade->user->name }}</td>
+                <td>{{ ucfirst($trade->type) }}</td>
+                <td>{{ $trade->amount }}</td>
+                <td>{{ $trade->margin }}</td>
+                <td>{{ $trade->leverage }}x</td>
+                <td>{{ $trade->price }}</td>
+                <td>{{ $trade->close_price ?? '-' }}</td>
+                <td>{{ ucfirst($trade->status) }}</td>
+                <td>
+                    @if($trade->status === 'closed')
+                        {{ $trade->profit_loss }}
+                    @else
+                        -
+                    @endif
+                </td>
+            </tr>
+            @endforeach
+        </table>
+
+    </div>
+</div>
+@endsection

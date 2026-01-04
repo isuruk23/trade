@@ -24,5 +24,9 @@ class DatabaseSeeder extends Seeder
             'verified' => 1,
             'status' => 1,
         ]);
+
+         $this->call([
+            CoinsTableSeeder::class,
+        ]);
     }
 }
