@@ -10,8 +10,13 @@ use Illuminate\Validation\Rule;
 
 class TradeController extends Controller
 {
+    
      public function index()
     {
+        if(auth()->user()->kyc->status !== 'approved'){
+            return back()->withErrors('KYC not approved');
+        }
+
         $trades = Trade::with('user', 'coin')->orderBy('created_at', 'desc')->get();
         return view('admin.trades', compact('trades'));
     }
@@ -86,6 +91,7 @@ class TradeController extends Controller
             'user_id' => auth()->id(),
             'coin_id' => $coin->id,
             'type' => $request->type,
+            'leverage' => $request->leverage,
             'amount' => $request->amount,
             'price' => $coin->price
         ]);

@@ -29,6 +29,13 @@ class DepositController extends Controller
             'tx_reference' => $request->tx_reference,
         ]);
 
+        Deposit::create([
+            'user_id' => auth()->id(),
+            'currency' => $request->currency,
+            'amount' => $request->amount,
+            'tx_reference' => $request->tx_reference,
+        ]);
+
         return back()->with('success','Deposit submitted for admin approval');
     }
 }

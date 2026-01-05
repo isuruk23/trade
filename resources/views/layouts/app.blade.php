@@ -32,9 +32,32 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="logo">
-                    <i class="fas fa-chart-line"></i>
-                    <span>NexTradeX Admin</span>
+                    <a class="navbar-brand logo" href="{{ route('home') }}">
+                    <img src="{{ asset('public/images/logo.png') }}" class="img-fluid logo-img" width="70px" alt="">
+                  
+                </a>
                 </div>
+                @auth
+                   @if(
+                        auth()->user()->role !== 'admin' &&
+                        (
+                            !auth()->user()->kyc ||
+                            auth()->user()->kyc->status === 'pending'
+                        )
+                    )
+                        <div class="alert alert-warning text-center mb-0 rounded-0 position-absolute" style="top: 50px;">
+                            <strong>KYC Under Review</strong> —
+                            Your verification is currently pending. You will be notified once approved.
+                            <a href="/kyc">KYC</a>
+                        </div>
+                        
+                    @endif
+                @endauth
+                
+
+          
+
+                
             </div>
             
             <div class="navbar-right">

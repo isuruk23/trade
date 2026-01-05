@@ -729,3 +729,17 @@
         .count-animation {
             animation: countUp 0.8s ease-out;
         }
+
+        /* Table View Mobile only */
+        @media (max-width: 576px) {
+            .responsive-table th,
+            .responsive-table td {
+                font-size: 12px;
+                padding: 6px;
+            }
+
+            .responsive-table input,
+            .responsive-table button {
+                font-size: 11px;
+            }
+        }

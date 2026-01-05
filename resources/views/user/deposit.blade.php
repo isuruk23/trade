@@ -32,7 +32,12 @@
                         <input type="text" name="tx_reference" class="form-control" placeholder="Hash / Note" required>
                     </div>
 
-                    <button class="btn btn-primary w-100">Submit for Approval</button>
+                   
+                     @kycPending           
+                         <button class="btn btn-primary w-100" disabled>Submit for Approval</button>
+                    @else
+                         <button class="btn btn-primary w-100">Submit for Approval</button>
+                    @endkycPending
                 </form>
             </div>
         </div>

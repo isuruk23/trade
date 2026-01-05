@@ -66,12 +66,18 @@
             </div>
         </div>
 
-        <button class="btn btn-success w-100">Place Trade</button>
+        
+        @kycPending           
+            <button class="btn btn-success w-100 " disabled>Place Trade</button>
+        @else
+            <button class="btn btn-success w-100 ">Place Trade</button>
+        @endkycPending
+
     </form>
     <hr>
     <h4>My Trades</h4>
     <div class="table-responsive">
-     <table class="table table-bordered table-striped mt-3 w-100">
+        <table class="table table-bordered mt-4 responsive-table">
         <thead>
             <tr>
                 <th>Coin</th>

@@ -16,6 +16,7 @@ class WithdrawalController extends Controller
     {
         $request->validate([
             'currency' => 'required',
+            'wallet' => 'required',
             'amount' => 'required|numeric|min:1'
         ]);
 
@@ -27,6 +28,14 @@ class WithdrawalController extends Controller
             'user_id' => auth()->id(),
             'type' => 'withdrawal',
             'currency' => $request->currency,
+            'wallet_address' => $request->wallet,
+            'amount' => $request->amount,
+        ]);
+
+        Withdrawal::create([
+            'user_id' => auth()->id(),
+            'currency' => $request->currency,
+            'wallet_address' => $request->wallet,
             'amount' => $request->amount,
         ]);
 
