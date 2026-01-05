@@ -8,7 +8,7 @@
         <div class="card shadow-sm border-0">
             <div class="card-body">
                 <h6 class="text-muted">Available Balance</h6>
-                <h3 class="text-success">{{ number_format($balance) }} ETH</h3>
+                <h3 class="text-success">{{ number_format($balance) }} USDT</h3>
             </div>
         </div>
     </div>

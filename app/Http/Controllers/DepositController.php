@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deposit;
+use App\Models\Coin;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class DepositController extends Controller
 {
     public function create()
     {
-        return view('user.deposit');
+        $coins=Coin::all();
+        return view('user.deposit', compact('coins'));
     }
 
     public function store(Request $request)

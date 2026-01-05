@@ -16,9 +16,9 @@
                     <div class="mb-3">
                         <label class="form-label">Currency</label>
                         <select name="currency" class="form-select">
-                            <option value="ETH">ETH</option>
-                            <option value="USDT">USDT</option>
-                            <option value="BTC">BTC</option>
+                            @foreach($coins as $coin)
+                            <option value="{{ $coin->id }}">{{ $coin->symbol }}</option>
+                            @endforeach
                         </select>
                     </div>
 

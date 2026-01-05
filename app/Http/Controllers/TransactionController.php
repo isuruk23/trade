@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -51,16 +52,39 @@ class TransactionController extends Controller
     public function approve($id)
     {
         $tx = Transaction::findOrFail($id);
+        // dd($tx);
+        // if($tx->type == 'deposit'){
+        //     $tx->user->increment('balance', $tx->amount);
+        // }
 
-        if($tx->type == 'deposit'){
+        // if($tx->type == 'withdrawal'){
+        //     $tx->user->decrement('balance', $tx->amount);
+        // }
+
+        // $tx->update(['status'=>'approved']);
+
+        $wallet = Wallet::firstOrCreate(
+            ['user_id' => $tx->user_id, 'coin_id' => $tx->currency],
+            ['balance' => 0]
+        );
+
+        // Update wallet balance based on transaction type
+        if ($tx->type === 'deposit') {
+            $wallet->balance += $tx->amount;
             $tx->user->increment('balance', $tx->amount);
-        }
-
-        if($tx->type == 'withdrawal'){
+        } elseif ($tx->type === 'withdrawal') {
+            if ($wallet->balance < $tx->amount) {
+                throw new \Exception('Insufficient wallet balance');
+            }
+            $wallet->balance -= $tx->amount;
             $tx->user->decrement('balance', $tx->amount);
         }
 
-        $tx->update(['status'=>'approved']);
+        // Save wallet changes
+        $wallet->save();
+
+        // Mark transaction as approved
+        $tx->update(['status' => 'approved']);
 
         return back()->with('success','Transaction approved');
     }

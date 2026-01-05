@@ -13,9 +13,7 @@ class TradeController extends Controller
     
      public function index()
     {
-        if(auth()->user()->kyc->status !== 'approved'){
-            return back()->withErrors('KYC not approved');
-        }
+       
 
         $trades = Trade::with('user', 'coin')->orderBy('created_at', 'desc')->get();
         return view('admin.trades', compact('trades'));
@@ -75,28 +73,70 @@ class TradeController extends Controller
             ['balance' => 0]
         );
 
+
+        // if ($request->type === 'buy') {
+        //     // dd($request->amount);
+        //      if ($wallet->balance < $request->amount) {
+        //         return back()->withErrors('Insufficient balance Please Topup Your Wallet');
+        //         // return back()->with('success', 'Insufficient ETX balance');
+        //     }
+        //     // $wallet->balance += $request->amount;
+        // } else {
+           
+        //     if ($wallet->balance < $request->amount) {
+        //         return back()->withErrors('Insufficient balance');
+        //         // return back()->with('success', 'Insufficient ETX balance');
+        //     }
+           
+        // }
+
+        
+        
         if ($request->type === 'buy') {
-            $wallet->balance += $request->amount;
-        } else {
-            if ($wallet->balance < $request->amount) {
-                return back()->withErrors('Insufficient ETX balance');
+             if ($wallet->balance < $request->amount) {
+                return back()->withErrors('Insufficient balance Please Topup Your Wallet');
                 // return back()->with('success', 'Insufficient ETX balance');
             }
-            $wallet->balance -= $request->amount;
+            else{
+            Trade::create([
+                'user_id' => auth()->id(),
+                'coin_id' => $coin->id,
+                'type' => $request->type,
+                'leverage' => $request->leverage,
+                'amount' => $request->amount,
+                'price' => $coin->price
+            ]);
+            return back()->with('success', 'Trade successful');
+            
         }
+        }
+        if ($request->type === 'sell') {
+            // dd($wallet->balance);
+            if ($wallet->balance < $request->amount) {
+                return back()->withErrors('Insufficient balance in Your Wallet');
+                // return back()->with('success', 'Insufficient ETX balance');
+            }
+             else{
+                
+                $wallet->balance -= $request->amount;
+                $wallet->save();
+                Trade::create([
+                    'user_id' => auth()->id(),
+                    'coin_id' => $coin->id,
+                    'type' => $request->type,
+                    'leverage' => $request->leverage,
+                    'amount' => $request->amount,
+                    'price' => $coin->price
+                ]);
+                return back()->with('success', 'Trade successful');
+                
+            }         
+        }
+        
 
-        $wallet->save();
-
-        Trade::create([
-            'user_id' => auth()->id(),
-            'coin_id' => $coin->id,
-            'type' => $request->type,
-            'leverage' => $request->leverage,
-            'amount' => $request->amount,
-            'price' => $coin->price
-        ]);
-
-        return back()->with('success', 'Trade successful');
+        dd($wallet);
+        
+        
     }
 
     // Close a trade

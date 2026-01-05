@@ -10,7 +10,8 @@ class WithdrawalController extends Controller
 {
     public function create()
     {
-        return view('user.withdraw');
+        $coins=Coin::all();
+        return view('user.withdraw', compact('coins'));
     }
 
     public function store(Request $request)
