@@ -41,7 +41,7 @@
                     <td>{{ $tx->tx_reference }}</td>
                     <td>
                         <span class="badge 
-                            {{ $tx->status=='pending'?'bg-warning':($tx->status=='approved'?'bg-success':'bg-danger') }}">
+                            {{ $tx->status=='pending'?'bg-warning':($tx->status=='approved'?'bg-success':'bg-danger') }} position-relative">
                             {{ ucfirst($tx->status) }}
                         </span>
                     </td>
