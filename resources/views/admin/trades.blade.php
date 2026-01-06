@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<h4 class="mb-4">Deposit Details</h4>
+<h4 class="mb-4">Trade Details</h4>
 
-<div class="card shadow-sm">
-    <div class="card-body table-responsive">
-        <table class="table table-bordered">
+
+<div class="table-responsive">
+        <table class="table table-bordered mt-4 responsive-table">
+             <thead class="table-light">
             <tr>
                 <th>User</th>
                 <th>Type</th>
@@ -17,6 +18,7 @@
                 <th>Status</th>
                 <th>PnL</th>
             </tr>
+            </thead>
             @foreach($trades as $trade)
             <tr>
                 <td>{{ $trade->user->name }}</td>
@@ -39,5 +41,5 @@
         </table>
 
     </div>
-</div>
+
 @endsection

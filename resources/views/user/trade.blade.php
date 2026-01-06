@@ -76,8 +76,8 @@
     </form>
     <hr>
     <h4>My Trades</h4>
-    <div class="table-responsive">
-        <table class="table table-bordered mt-4">
+    <div class="table-responsive custom-table-wrapper">
+  <table class="table custom-dark-table">
         <thead>
             <tr>
                 <th>Coin</th>
