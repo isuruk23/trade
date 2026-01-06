@@ -5,7 +5,7 @@
     <h4>ETX/USDT Leverage Trading</h4>
 
     <div class="alert alert-info">
-        Current ETX Price: <strong>{{ $coin->price }} USD</strong>
+        Current Market Price: <strong>{{ $coin->price }} USDT</strong>
     </div>
     {{-- Success Message --}}
     @if (session('success'))
