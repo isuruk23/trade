@@ -11,7 +11,7 @@ class WithdrawalController extends Controller
 {
     public function create()
     {
-        $coins=Coin::all();
+        $coins=Coin::where('symbol','USDT')->get();
         return view('user.withdraw', compact('coins'));
     }
 

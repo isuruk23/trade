@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <h4>ETX Leveraged Trading</h4>
+    <h4>ETX/USDT Leverage Trading</h4>
 
     <div class="alert alert-info">
         Current ETX Price: <strong>{{ $coin->price }} USD</strong>

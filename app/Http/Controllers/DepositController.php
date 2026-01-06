@@ -11,7 +11,7 @@ class DepositController extends Controller
 {
     public function create()
     {
-        $coins=Coin::all();
+        $coins=Coin::where('symbol','USDT')->get();
         return view('user.deposit', compact('coins'));
     }
 
