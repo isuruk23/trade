@@ -18,6 +18,14 @@ class CoinsTableSeeder extends Seeder
 
         DB::table('coins')->insert([
             [
+                'symbol'       => 'USDT',
+                'name'         => 'USDT Coin',
+                'price'        => 1000,        // initial price
+                'total_supply' => 1000000000,  // 1 billion
+                'created_at'   => $now,
+                'updated_at'   => $now,
+            ],
+            [
                 'symbol'       => 'ETX',
                 'name'         => 'ETX Coin',
                 'price'        => 1000,        // initial price

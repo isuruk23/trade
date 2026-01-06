@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('currency');
+            $table->integer('currency');
             $table->string('tx_reference')->nullable();
             $table->decimal('amount', 18, 8);
             $table->enum('status', ['pending','approved','rejected'])->default('pending');
