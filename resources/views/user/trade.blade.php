@@ -29,7 +29,7 @@
 
     <form method="POST">
         @csrf
-        <input type="hidden" name="coin_id" value="{{ $coin->id }}">
+        <input type="hidden" name="coin_id" value="1">
 
         <div class="mb-3">
             <label>Trade Type</label>
@@ -77,7 +77,7 @@
     <hr>
     <h4>My Trades</h4>
     <div class="table-responsive">
-        <table class="table table-bordered mt-4 responsive-table">
+        <table class="table table-bordered mt-4">
         <thead>
             <tr>
                 <th>Coin</th>

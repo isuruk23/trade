@@ -731,6 +731,14 @@
         }
 
         /* Table View Mobile only */
+
+        @media (max-width: 576px) {
+            .table td, .table th {
+                font-size: 12px;
+                padding: 4px;
+            }
+            }
+
         @media (max-width: 576px) {
             .responsive-table th,
             .responsive-table td {
@@ -741,5 +749,80 @@
             .responsive-table input,
             .responsive-table button {
                 font-size: 11px;
+            }
+        }
+
+
+
+        /* ===== DATATABLE GLOBAL STYLE ===== */
+        .custom-datatable {
+            font-size: 14px;
+        }
+
+        .custom-datatable thead th {
+            background: #f8f9fa;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .custom-datatable td,
+        .custom-datatable th {
+            padding: 8px 10px;
+            vertical-align: middle;
+        }
+
+        /* Search box */
+        .dataTables_filter input {
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 14px;
+        }
+
+        /* Pagination */
+        .dataTables_paginate .paginate_button {
+            padding: 4px 10px;
+            font-size: 13px;
+        }
+
+        /* Info text */
+        .dataTables_info {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* ===== MOBILE VIEW ===== */
+        @media (max-width: 768px) {
+
+            .custom-datatable {
+                font-size: 11px;
+            }
+
+            .custom-datatable td,
+            .custom-datatable th {
+                padding: 5px 6px;
+            }
+
+            /* Search box mobile */
+            .dataTables_filter input {
+                width: 100%;
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+
+            /* Hide length selector */
+            .dataTables_length {
+                display: none;
+            }
+
+            /* Pagination smaller */
+            .dataTables_paginate .paginate_button {
+                font-size: 11px;
+                padding: 3px 6px;
+            }
+
+            /* Info text smaller */
+            .dataTables_info {
+                font-size: 11px;
+                text-align: center;
             }
         }

@@ -16,8 +16,8 @@
 <tr>
     <td>{{ $k->user->email }}</td>
     <td>
-        <a href="{{ asset('storage/'.$k->document_front) }}" target="_blank">Front</a> |
-        <a href="{{ asset('storage/'.$k->selfie) }}" target="_blank">Selfie</a>
+        <a href="{{ asset('public/'.$k->document_front) }}" target="_blank">Front</a> |
+        <a href="{{ asset('public/'.$k->selfie) }}" target="_blank">Selfie</a>
     </td>
     <td>{{ ucfirst($k->status) }}</td>
     <td>
@@ -31,4 +31,12 @@
 </tr>
 @endforeach
 </table>
+@endsection
+@section('script')
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+
 @endsection

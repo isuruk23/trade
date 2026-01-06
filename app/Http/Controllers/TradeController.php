@@ -68,12 +68,14 @@ class TradeController extends Controller
 
         $coin = Coin::findOrFail($request->coin_id);
 
+        
+
         $wallet = Wallet::firstOrCreate(
             ['user_id' => auth()->id(), 'coin_id' => $coin->id],
             ['balance' => 0]
         );
 
-
+       
         // if ($request->type === 'buy') {
         //     // dd($request->amount);
         //      if ($wallet->balance < $request->amount) {
