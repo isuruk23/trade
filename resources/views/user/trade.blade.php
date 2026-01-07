@@ -5,7 +5,7 @@
     <h4>ETX/USDT Leverage Trading</h4>
 
     <div class="alert alert-info">
-        Current Market Price: <strong>{{ $coin->price }} USDT</strong>
+        Current Market Price: <strong>{{ $coin->price }} ETX/USDT</strong>
     </div>
     {{-- Success Message --}}
     @if (session('success'))
@@ -94,7 +94,7 @@
         <tbody>
             @forelse($trades as $trade)
                 <tr>
-                    <td>{{ $trade->coin->symbol }}</td>
+                    <td>{{ $trade->coin->symbol }}/USDT</td>
                     <td>{{ ucfirst($trade->type) }}</td>
                     <td>{{ $trade->leverage }}x</td>
                     <td>{{ $trade->amount }}</td>

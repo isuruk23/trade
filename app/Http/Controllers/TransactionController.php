@@ -17,7 +17,12 @@ class TransactionController extends Controller
     // Deposit details page
     public function deposits(Request $request)
     {
-        $query = Transaction::where('type','deposit')->orderBy('created_at','desc');
+        
+        $query = Transaction::join('coins', 'transactions.currency', '=', 'coins.id')
+        ->where('transactions.type', 'deposit')
+        ->orderBy('transactions.created_at', 'desc')
+        ->select('transactions.*', 'coins.name as coin_name', 'coins.symbol');
+        
 
         if($request->filled('from')) {
             $query->whereDate('created_at', '>=', $request->from);
@@ -34,7 +39,10 @@ class TransactionController extends Controller
     // Withdrawals with optional date filter
     public function withdrawals(Request $request)
     {
-        $query = Transaction::where('type','withdrawal')->orderBy('created_at','desc');
+        $query = Transaction::join('coins', 'transactions.currency', '=', 'coins.id')
+        ->where('transactions.type', 'withdrawal')
+        ->orderBy('transactions.created_at', 'desc')
+        ->select('transactions.*', 'coins.name as coin_name', 'coins.symbol');
 
         if($request->filled('from')) {
             $query->whereDate('created_at', '>=', $request->from);

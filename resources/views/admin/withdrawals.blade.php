@@ -25,6 +25,7 @@
                     <th>User</th>
                     <th>Amount</th>
                     <th>Currency</th>
+                    <th>Address</th>
                     <th>Reference</th>
                     <th>Status</th>
                     <th>Admin Note</th>
@@ -36,7 +37,8 @@
                 <tr>
                     <td>{{ $tx->user->name }}</td>
                     <td>{{ $tx->amount }}</td>
-                    <td>{{ $tx->currency }}</td>
+                    <td>{{ $tx->symbol }}</td>
+                    <td>{{ $tx->wallet_address }}</td>
                     <td>{{ $tx->tx_reference ?? '-' }}</td>
                     <td>
                         <span class="badge 

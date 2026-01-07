@@ -37,7 +37,7 @@
                 <tr>
                     <td>{{ $tx->user->name }}</td>
                     <td>{{ $tx->amount }}</td>
-                    <td>{{ $tx->currency }}</td>
+                    <td>{{ $tx->symbol }}</td>
                     <td>{{ $tx->tx_reference }}</td>
                     <td>
                         <span class="badge 
