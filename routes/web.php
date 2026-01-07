@@ -56,10 +56,23 @@ Route::get('/trade/etx', [TradeController::class, 'tradeForm'])
 Route::post('/trade/etx', [TradeController::class, 'trade'])
     ->name('trade.etx.submit');
 
-
-
 Route::get('/my-trades', [TradeController::class, 'myTrades'])->name('trades.my');
 Route::post('/my-trades/{trade}/close', [TradeController::class, 'closeTrade'])->name('trades.close');
+
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/dashboard');
+})->middleware(['signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('success', 'Verification link sent!');
+})->middleware(['throttle:6,1'])->name('verification.send');
 
 
 Route::middleware(['auth','admin'])

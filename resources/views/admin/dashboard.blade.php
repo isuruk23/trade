@@ -43,7 +43,7 @@
                             <span>8.3%</span>
                         </div>
                     </div>
-                    <div class="kpi-value count-animation" id="totalDeposits"><a href="deposits">{{$totalDeposits}}</a></div>
+                    <div class="kpi-value count-animation" id="totalDeposits"><a href="deposits">{{ number_format($totalDeposits, 0) }}</a></div>
                     <div class="kpi-label">Total Deposits</div>
                 </div>
                 
@@ -57,7 +57,7 @@
                             <span>3.1%</span>
                         </div>
                     </div>
-                    <div class="kpi-value count-animation" id="totalWithdrawals"><a href="withdrawals">{{$totalWithdrawals}}</a></div>
+                    <div class="kpi-value count-animation" id="totalWithdrawals"><a href="withdrawals">{{ number_format($totalWithdrawals, 0) }}</a></div>
                     <div class="kpi-label">Total Withdrawals</div>
                 </div>
                 
@@ -71,7 +71,7 @@
                             <span>5.7%</span>
                         </div>
                     </div>
-                    <div class="kpi-value count-animation" id="todayVolume">{{$totalBalance}}</div>
+                    <div class="kpi-value count-animation" id="todayVolume">{{ number_format($totalBalance, 0) }}</div>
                     <div class="kpi-label">Today's Volume</div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                                                 <!-- <div class="user-avatar">JD</div> -->
                                                 <div>
                                                     <div style="font-weight: 500;">{{ $tx->user->name }}</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">{{ $tx->amount }} Deposit</div>
+                                                    <div style="font-size: 12px; color: var(--text-gray);">{{ number_format($tx->amount, 0) }} Deposit</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -185,7 +185,7 @@
                                                 <!-- <div class="user-avatar">JD</div> -->
                                                 <div>
                                                     <div style="font-weight: 500;">{{ $tx->user->name }}</div>
-                                                    <div style="font-size: 12px; color: var(--text-gray);">{{ $tx->amount }} Deposit</div>
+                                                    <div style="font-size: 12px; color: var(--text-gray);">{{ number_format($tx->amount, 0) }} Deposit</div>
                                                 </div>
                                             </div>
                                         </td>

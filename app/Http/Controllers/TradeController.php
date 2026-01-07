@@ -106,7 +106,8 @@ class TradeController extends Controller
                 'type' => $request->type,
                 'leverage' => $request->leverage,
                 'amount' => $request->amount,
-                'price' => $coin->price
+                'price' => $coin->price,
+                'date_opened' => now()
             ]);
             return back()->with('success', 'Trade successful');
             
@@ -128,7 +129,8 @@ class TradeController extends Controller
                     'type' => $request->type,
                     'leverage' => $request->leverage,
                     'amount' => $request->amount,
-                    'price' => $coin->price
+                    'price' => $coin->price,
+                    'date_opened' => now()
                 ]);
                 return back()->with('success', 'Trade successful');
                 
@@ -136,8 +138,7 @@ class TradeController extends Controller
         }
         
 
-        dd($wallet);
-        
+       
         
     }
 
@@ -158,7 +159,7 @@ class TradeController extends Controller
         } else {
             $trade->profit_loss = bcmul($trade->amount, $trade->price - $trade->close_price, 8);
         }
-
+        $trade->date_closed = now();
         $trade->status = 'closed';
         $trade->save();
 

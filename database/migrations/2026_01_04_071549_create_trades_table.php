@@ -20,7 +20,9 @@ return new class extends Migration
             $table->decimal('margin', 20, 0)->nullable();
             $table->decimal('leverage', 5, 2)->default(1);
             $table->decimal('price', 15, 0);
+            $table->datetime('date_opened');
             $table->decimal('close_price', 15, 0)->nullable();
+            $table->datetime('date_closed')->nullable();    
             $table->enum('status', ['open', 'closed'])->default('open');
             $table->decimal('profit_loss', 20, 0)->nullable();
             $table->timestamps();

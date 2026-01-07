@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->integer('currency');
             $table->string('wallet_address')->nullable();
-            $table->decimal('amount', 18, 8);
+            $table->decimal('amount', 18, 2);
             $table->enum('status', ['pending','approved','rejected'])->default('pending');
             $table->text('admin_note')->nullable();
             $table->timestamps();

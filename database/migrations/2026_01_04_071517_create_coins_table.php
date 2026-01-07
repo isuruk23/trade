@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id(); // bigint unsigned
             $table->string('symbol')->unique();
             $table->string('name');
-            $table->decimal('price', 15, 0);
-            $table->decimal('total_supply', 20, 0);
+            $table->decimal('price', 15, 2);
+            $table->decimal('total_supply', 20, 2);
             $table->timestamps();
         });
     }

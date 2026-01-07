@@ -7,7 +7,7 @@
     <div class="col-sm-12 col-md-3 col-lg-3">
         <div class="card shadow-sm border-0">
             <div class="card-body">
-                <h6 class="text-muted">Available Balance</h6>
+                <h6 class="card-title">Available Balance</h6>
                 <h3 class="text-success">{{ number_format($balance) }} USDT</h3>
             </div>
         </div>
@@ -16,7 +16,7 @@
     <div class="col-sm-12 col-md-3 col-lg-3">
         <div class="card shadow-sm border-0">
             <div class="card-body">
-                <h6 class="text-muted">Total Deposits</h6>
+                <h6 class="card-title">Total Deposits</h6>
                 <h3>{{ $deposits }}</h3>
             </div>
         </div>
@@ -25,7 +25,7 @@
     <div class="col-sm-12 col-md-3 col-lg-3">
         <div class="card shadow-sm border-0">
             <div class="card-body">
-                <h6 class="text-muted">Withdrawals</h6>
+                <h6 class="card-title">Withdrawals</h6>
                 <h3>{{ $withdrawals }}</h3>
             </div>
         </div>
@@ -34,7 +34,7 @@
     <div class="col-sm-12 col-md-3 col-lg-3">
         <div class="card shadow-sm border-0">
             <div class="card-body">
-                <h6 class="text-muted">Pending Requests</h6>
+                <h6 class="card-title">Pending Requests</h6>
                 <h3 class="text-warning">{{ $pending }}</h3>
             </div>
         </div>
@@ -50,7 +50,7 @@
     <div class="col-12">
         <div class="card shadow-sm border-0">
             <div class="card-body table-responsive">
-                <h6 class="text-muted">Transaction</h6>
+                <h6 class="card-title">Transaction</h6>
                 <table class="table">
                 <thead class="table-light">
                     <tr>

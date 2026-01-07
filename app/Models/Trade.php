@@ -14,7 +14,9 @@ class Trade extends Model
         'margin',
         'leverage',
         'price',
+        'date_opened',
         'close_price',
+        'date_closed',
         'status',
         'profit_loss'
     ];

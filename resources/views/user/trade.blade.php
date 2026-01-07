@@ -85,6 +85,7 @@
                 <th>Leverage</th>
                 <th>Amount</th>
                 <th>Open Price</th>
+                <th>Open Time</th>
                 <th>Close Price</th>
                 <th>Status</th>
                 <th>PnL</th>
@@ -99,6 +100,14 @@
                     <td>{{ $trade->leverage }}x</td>
                     <td>{{ $trade->amount }}</td>
                     <td>{{ $trade->price }}</td>
+                    <td>
+    @php
+        $start = \Carbon\Carbon::parse($trade->date_opened);
+        $end = \Carbon\Carbon::parse($trade->date_closed);
+        $duration = $end->diff($start);
+    @endphp
+    {{ $duration->h }}h {{ $duration->i }}m {{ $duration->s }}s
+</td>
                     <td>{{ $trade->close_price ?? '-' }}</td>
                     <td>{{ ucfirst($trade->status) }}</td>
                     <td class="{{ ($trade->profit_loss ?? 0) >= 0 ? 'text-success' : 'text-danger' }}">
