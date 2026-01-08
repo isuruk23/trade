@@ -1997,6 +1997,10 @@ select.form-control {
     background-size: 16px;
     padding-right: 40px;
 }
+select.form-control option {
+    color: var(--primary-dark) !important;
+    background-color: var(--text-light);
+}
 
 textarea.form-control {
     min-height: 150px;

@@ -86,7 +86,7 @@
                                 <strong>{{ $message }}</strong>
                             </div>
                         @enderror
-                        <button type="button" class="toggle-password" data-target="registerPassword">
+                        <button type="button" class="toggle-password" data-target="password">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
@@ -100,7 +100,7 @@
                     <label class="form-label" for="password-confirm">Confirm Password</label>
                     <div class="password-wrapper">
                         <input type="password" id="password-confirm" name="password_confirmation" class="form-control" placeholder="Confirm your password">
-                        <button type="button" class="toggle-password" data-target="registerConfirmPassword">
+                        <button type="button" class="toggle-password" data-target="password-confirm">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
@@ -170,5 +170,26 @@
 
 @endsection
 @section('script')
-        
+   <script>
+    // Toggle password visibility
+    const togglePasswordBtns = document.querySelectorAll('.toggle-password');
+    
+            togglePasswordBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const passwordInput = document.getElementById(targetId);
+                    const icon = this.querySelector('i');
+                    
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            });
+</script>     
 @endsection

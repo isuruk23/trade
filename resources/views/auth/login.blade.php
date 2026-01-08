@@ -67,7 +67,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="loginPassword">Password</label>
+                    <label class="form-label" for="password">Password</label>
                     <div class="password-wrapper">
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                         @error('password')
@@ -75,11 +75,11 @@
                                         <strong>{{ $message }}</strong>
                                     </div>
                         @enderror
-                        <button type="button" class="toggle-password" data-target="loginPassword">
+                        <button type="button" class="toggle-password" data-target="password">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
-                    <div class="error-text" id="loginPasswordError">Password must be at least 8 characters</div>
+                    <div class="error-text" id="passwordError">Password must be at least 8 characters</div>
                 </div>
                 
                 <div class="form-options">
@@ -120,4 +120,26 @@
 
 @endsection
 @section('script')
+<script>
+    // Toggle password visibility
+    const togglePasswordBtns = document.querySelectorAll('.toggle-password');
+    
+            togglePasswordBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const passwordInput = document.getElementById(targetId);
+                    const icon = this.querySelector('i');
+                    
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            });
+</script>
 @endsection
