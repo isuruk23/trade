@@ -100,13 +100,10 @@
                     <td>{{ $trade->leverage }}x</td>
                     <td>{{ $trade->amount }}</td>
                     <td>{{ $trade->price }}</td>
-                    <td>
-    @php
-        $start = \Carbon\Carbon::parse($trade->date_opened);
-        $end = \Carbon\Carbon::parse($trade->date_closed);
-        $duration = $end->diff($start);
-    @endphp
-    {{ $duration->h }}h {{ $duration->i }}m {{ $duration->s }}s
+                    <td class="open-time"
+    data-open="{{ $trade->date_opened }}"
+    data-close="{{ $trade->date_closed }}">
+    --
 </td>
                     <td>{{ $trade->close_price ?? '-' }}</td>
                     <td>{{ ucfirst($trade->status) }}</td>
@@ -133,5 +130,38 @@
     </table>
 </div>
 </div>
+
+@endsection
+
+@section('script')
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+function updateOpenTimes() {
+    $('.open-time').each(function () {
+        let openTime = $(this).data('open');
+        let closeTime = $(this).data('close');
+
+        let start = new Date(openTime);
+        let end = closeTime ? new Date(closeTime) : new Date(); // if not closed, use now
+
+        let diff = Math.floor((end - start) / 1000); // seconds
+
+        if (diff < 0) diff = 0;
+
+        let h = Math.floor(diff / 3600);
+        let m = Math.floor((diff % 3600) / 60);
+        let s = diff % 60;
+
+        $(this).text(h + 'h ' + m + 'm ' + s + 's');
+    });
+}
+
+// first load
+updateOpenTimes();
+
+// update every second
+setInterval(updateOpenTimes, 1000);
+</script>
 
 @endsection

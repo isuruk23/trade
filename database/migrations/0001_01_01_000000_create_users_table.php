@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('country')->default(0);
             $table->integer('verified')->default(0);
             $table->integer('status')->default(0);
+            $table->string('verification_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

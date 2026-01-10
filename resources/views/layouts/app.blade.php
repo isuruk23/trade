@@ -344,7 +344,7 @@
 
 
 
-
+ @yield('script')
 <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Sidebar toggle

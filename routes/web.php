@@ -29,6 +29,8 @@ Route::get('/platform', [PageController::class, 'platform'])->name('platform');
 Route::get('/plan', [PageController::class, 'plan'])->name('plan');
 Route::get('/trade', [PageController::class, 'trade'])->name('trade');
 Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+Route::get('/verify-email/{token}', [VerificationController::class, 'verifyEmail'])
+    ->name('email.verify.custom');
 
 
 Route::middleware('auth')->group(function(){
