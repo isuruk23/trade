@@ -31,7 +31,7 @@ class RegisterController extends Controller
      * @var string
      */
    
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/login';
     // protected function authenticated($request, $user)
     // {
     //     if ($user->role === 'admin') {
