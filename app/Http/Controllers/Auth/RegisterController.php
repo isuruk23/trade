@@ -31,25 +31,25 @@ class RegisterController extends Controller
      * @var string
      */
    
-    protected $redirectTo = '/kyc';
-    protected function authenticated($request, $user)
-    {
-        if ($user->role === 'admin') {
-            return redirect('/admin/dashboard');
-        }
-        else{
-            if(!auth()->user()->kyc || auth()->user()->kyc->status !== 'approved'){
-                return redirect('/kyc')->withErrors('Complete KYC first');
-            }
-            else{
-                return redirect('/user/dashboard');
+    protected $redirectTo = '/dashboard';
+    // protected function authenticated($request, $user)
+    // {
+    //     if ($user->role === 'admin') {
+    //         return redirect('/admin/dashboard');
+    //     }
+    //     else{
+    //         if(!auth()->user()->kyc || auth()->user()->kyc->status !== 'approved'){
+    //             return redirect('/kyc')->withErrors('Complete KYC first');
+    //         }
+    //         else{
+    //             return redirect('/user/dashboard');
 
-            }
-        }
+    //         }
+    //     }
         
 
         
-    }
+    // }
 
 
     /**
@@ -86,7 +86,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $token = Str::random(64);
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'country' => $data['country'],

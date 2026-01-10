@@ -32,6 +32,14 @@ Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard'
 Route::get('/verify-email/{token}', [VerificationController::class, 'verifyEmail'])
     ->name('email.verify.custom');
 
+Route::get('/test-mail', function () {
+    Mail::raw('Test email from Laravel', function ($msg) {
+        $msg->to('isuru.k23@gmail.com')->subject('Test Mail');
+    });
+
+    return 'Mail sent';
+});
+
 
 Route::middleware('auth')->group(function(){
 
