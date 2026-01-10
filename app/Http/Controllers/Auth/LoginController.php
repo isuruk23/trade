@@ -22,13 +22,23 @@ class LoginController extends Controller
 
 
     protected function authenticated($request, $user)
-    {
-        if ($user->role === 'admin') {
-            return redirect('/admin/dashboard');
-        }
+        {
+            // 1️⃣ Block unverified users
+            if ($user->verified==0) {
+                auth()->logout(); // log them out
+              
+                return redirect('/login')
+                ->with('success', 'Please verify your email before login.');
+            }
 
-        return redirect('/dashboard');
-    }
+            // 2️⃣ Admin redirect
+            if ($user->role === 'admin') {
+                return redirect('/admin/dashboard');
+            }
+
+            // 3️⃣ Regular user redirect
+            return redirect('/dashboard');
+        }
 
     /**
      * Where to redirect users after login.
