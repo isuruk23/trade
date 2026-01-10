@@ -31,7 +31,7 @@ class RegisterController extends Controller
      * @var string
      */
    
-    protected $redirectTo = '/login';
+    // protected $redirectTo = '/login';
     // protected function authenticated($request, $user)
     // {
     //     if ($user->role === 'admin') {
@@ -100,5 +100,7 @@ class RegisterController extends Controller
             $message->to($user->email)
                     ->subject('Verify Your Email Address');
         });
+
+        return redirect('/login')->with('error', 'Verification link Send to Your Email Address.');
     }
 }
