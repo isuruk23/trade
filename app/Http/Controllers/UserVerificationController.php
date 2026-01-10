@@ -24,6 +24,6 @@ class UserVerificationController extends Controller
         $user->verification_token = null;
         $user->save();
 
-        return redirect('/dashboard')->with('success', 'Email verified successfully. You can now login.');
+        return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
     }
 }
