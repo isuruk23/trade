@@ -86,16 +86,21 @@ class RegisterController extends Controller
     {
         $verifyUrl = route('email.verify.custom', $user->verification_token);
 
-       
-
-        Mail::send('emails.verify', ['url' => $verifyUrl, 'user' => $user], function ($message) use ($user) {
+        Mail::send('emails.verify', [
+            'url' => $verifyUrl,
+            'user' => $user
+        ], function ($message) use ($user) {
             $message->to($user->email)
                     ->subject('Verify Your Email Address');
         });
 
-        auth()->logout(); // stop auto-login after register
+        
+
+        auth()->logout(); // stop auto login
 
         return redirect('/login')
             ->with('success', 'Registration successful. Please check your email to verify your account.');
     }
+
+    
 }
