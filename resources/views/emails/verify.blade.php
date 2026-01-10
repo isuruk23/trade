@@ -1,25 +1,10 @@
-@extends('layouts.app')
+<h3>Hello {{ $user->name }}</h3>
 
-@section('content')
-<div class="container">
-    <h4>Verify Your Email Address</h4>
+<p>Please verify your email by clicking the link below:</p>
 
-    @if (session('resent'))
-        <div class="alert alert-success">
-            A new verification link has been sent to your email.
-        </div>
-    @endif
+<p>
+    <a href="{{ $url }}">Verify My Email</a>
+</p>
 
-    <p>
-        Before proceeding, please check your email for a verification link.
-        If you did not receive the email,
-    </p>
-
-    <form method="POST" action="{{ route('verification.resend') }}">
-        @csrf
-        <button type="submit" class="btn btn-primary">
-            click here to request another
-        </button>
-    </form>
-</div>
-@endsection
+<p>If you did not create this account, please ignore this email.</p>
+<p>Thank you!</p>
