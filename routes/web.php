@@ -13,6 +13,7 @@ use App\Http\Controllers\User\KycController as UserKycController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\CoinController;
+use App\Http\Controllers\VerificationController;
 
 
 // Route::get('/', function () {
