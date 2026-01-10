@@ -53,6 +53,6 @@ class VerificationController extends Controller
         $user->verification_token = null;
         $user->save();
 
-        return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
+        return redirect('/dashboard')->with('success', 'Email verified successfully. You can now login.');
     }
 }
