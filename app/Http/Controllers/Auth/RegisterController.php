@@ -101,6 +101,9 @@ class RegisterController extends Controller
                     ->subject('Verify Your Email Address');
         });
 
-        return redirect('/login')->with('error', 'Verification link Send to Your Email Address.');
-    }
+        auth()->logout(); // prevent auto login
+
+        return redirect('/login')
+            ->with('success', 'Registration successful. Please verify your email.');
+        }
 }
