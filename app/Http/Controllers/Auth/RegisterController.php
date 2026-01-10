@@ -84,7 +84,6 @@ class RegisterController extends Controller
 
         auth()->logout(); // prevent auto login
 
-        return redirect('/login')
-            ->with('success', 'Registration successful. Please verify your email.');
+        return $user;
         }
 }
