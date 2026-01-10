@@ -84,6 +84,6 @@ class RegisterController extends Controller
 
         auth()->logout(); // prevent auto login
 
-        return $user;
+        
         }
 }
