@@ -64,26 +64,38 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+    
+
+
+
     protected function create(array $data)
     {
         $token = Str::random(64);
-        $user = User::create([
+
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'country' => $data['country'],
             'password' => Hash::make($data['password']),
             'verification_token' => $token,
+            'verified' => 0,
         ]);
+    }
+    protected function registered(Request $request, $user)
+    {
+        $verifyUrl = route('email.verify.custom', $user->verification_token);
 
-        $verifyUrl = route('email.verify.custom', $token);
-
-        Mail::send('emails.verify', ['url' => $verifyUrl, 'user' => $user], function ($message) use ($user) {
+        Mail::send('emails.verify', [
+            'url' => $verifyUrl,
+            'user' => $user
+        ], function ($message) use ($user) {
             $message->to($user->email)
                     ->subject('Verify Your Email Address');
         });
 
-        auth()->logout(); // prevent auto login
+        auth()->logout(); // stop auto-login after register
 
-        
-        }
+        return redirect('/login')
+            ->with('success', 'Registration successful. Please check your email to verify your account.');
+    }
 }
