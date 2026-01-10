@@ -30,7 +30,7 @@ Route::get('/platform', [PageController::class, 'platform'])->name('platform');
 Route::get('/plan', [PageController::class, 'plan'])->name('plan');
 Route::get('/trade', [PageController::class, 'trade'])->name('trade');
 Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
-Route::get('/verify-email/{token}', [VerificationController::class, 'verifyEmail'])
+Route::get('/verify-email/{token}', [UserVerificationController::class, 'verifyEmail'])
     ->name('email.verify.custom');
 
 Route::get('/test-mail', function () {
@@ -71,19 +71,7 @@ Route::get('/my-trades', [TradeController::class, 'myTrades'])->name('trades.my'
 Route::post('/my-trades/{trade}/close', [TradeController::class, 'closeTrade'])->name('trades.close');
 
 
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-    return redirect('/dashboard');
-})->middleware(['signed'])->name('verification.verify');
-
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-    return back()->with('success', 'Verification link sent!');
-})->middleware(['throttle:6,1'])->name('verification.send');
 
 
 Route::middleware(['auth','admin'])

@@ -41,20 +41,5 @@ class VerificationController extends Controller
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
-    public function verifyEmail($token)
-    {
-        $user = User::where('verification_token', $token)->first();
-        dd($user);
-        if (!$user) {
-            // return redirect('/login')->with('error', 'Invalid or expired verification link.');
-            return redirect('/login')
-            ->with('errors', 'Invalid or expired verification link.');
-        }
-
-        $user->verified = 1;
-        $user->verification_token = null;
-        $user->save();
-
-        return redirect('/dashboard')->with('success', 'Email verified successfully. You can now login.');
-    }
+    
 }
