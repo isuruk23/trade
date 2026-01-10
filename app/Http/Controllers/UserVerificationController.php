@@ -11,7 +11,7 @@ class UserVerificationController extends Controller
 {
     public function verifyEmail($token)
     {
-        dd($token);
+      
         $user = User::where('verification_token', $token)->first();
         
         if (!$user) {
